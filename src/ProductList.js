@@ -40,28 +40,31 @@ export default function ProductList() {
       })
       .then((result) => {
         setProducts(result.data.products);
-        console.log(products);
+        console.log(cartItem);
       })
       .catch((err) => console.log(err));
   }, [products]);
 
   const onAdd = (product) => {
-    const exist = [product].find((x) => x.id === product.id);
-    console.log(exist);
+    
+    const exist = product.find((x) => x.id === product.id);
+    // console.log(exist);
     if (exist) {
       setCartItem(
-        cartItem.map((x) =>
+        product.map((x) =>
           x.id === product.id ? { ...exist, qty: exist.qty + 1 } : x
         )
       );
     } else {
-      setProducts([...cartItem, { ...product, qty: 1 }]);
+      setCartItem([...cartItem,  ...product]);
     }
   };
 
+
+
   const display = () => {
     setDisplaySideBar(!displaySideBar);
-    console.log(displaySideBar);
+    // console.log(displaySideBar);
   };
   const closeDrawer = () => {
     setOpen(false);
@@ -105,7 +108,7 @@ export default function ProductList() {
                 setOpen(true);
                 display();
                 // setProduct(result);
-                onAdd(result);
+                onAdd([result]);
               }}
             >
               Add to Cart

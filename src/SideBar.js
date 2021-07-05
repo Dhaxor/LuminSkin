@@ -29,8 +29,8 @@ export default function SideBar(props) {
       onClose={props.close}
       onOpen={() => {}}
     >
-      <div style={classes.side}>
-        <Grid container style={classes.main}>
+      <div style={classes.side} >
+        <Grid container style={classes.main} style={{overflow:'scroll'}}>
           <Grid item md={5} style={{ paddingLeft: "3%", paddingTop: "3%" }}>
             <Box style={classes.ImageWrapper}>
               <ArrowBackIosIcon style={{ width: "10px" }} />
@@ -60,12 +60,14 @@ export default function SideBar(props) {
           </Grid>
 
           {console.log(onAdd)}
-          {/* {props.cart.map(res =>  ( */}
-          <Grid item md={12}>
+          {onAdd.map( (res,index)  =>  (
+            
+          <Grid item md={12} >
             <div style={classes.cartItem}>
               <Grid container>
                 <Grid item md={6} style={classes.CartLeft}>
-                  {/* <Typography>{cart.title}</Typography> */}
+                  <Typography>{res.title}</Typography>
+                  {console.log(res)}
                   <div style={{ fontSize: "10px" }}>Combination | 25-34</div>
                   <div style={{ fontSize: "10px" }}>
                     One time purchase of Two Month supply.
@@ -90,7 +92,7 @@ export default function SideBar(props) {
                         //     setCount(count + 1);
                         //   }}
                       >
-                        1
+                        {/* {res.qty} */}
                       </Button>
                       <Button
                         aria-label="increase"
@@ -108,18 +110,18 @@ export default function SideBar(props) {
                 <Grid item md={6}>
                   <Typography style={classes.closeCartItem}>X</Typography>
                   <img
-                    src={productImg}
+                    src={res.image_url}
                     alt="productImg"
                     height={50}
-                    width={100}
+                    width={50}
                     style={classes.productImg}
                   />
-                  {/* <span>${cart.price}</span> */}
+                  <span>${res.price}</span>
                 </Grid>
               </Grid>
             </div>
           </Grid>
-          {/* ))} */}
+           ))}
         </Grid>
 
         <div item md={12} style={classes.checkout}>
@@ -187,7 +189,7 @@ const useStyles = () => ({
     justifyContent: "flex-end",
   },
   checkout: {
-    position: "absolute",
+    position: "sticky",
     bottom: "0px",
     left: "0px",
     Boxshadow: "3px 3px 5px 6px #ccc",
@@ -236,7 +238,7 @@ const useStyles = () => ({
     height: "80px",
     display: "flex",
     flexDirection: "column",
-    justifyContent: "center",
+    // justifyContent: "center",
   },
   closeCartItem: {
     display: "flex",
