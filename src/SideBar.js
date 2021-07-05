@@ -189,7 +189,7 @@ const useStyles = () => ({
     justifyContent: "flex-end",
   },
   checkout: {
-    position: "sticky",
+    position: "absolute",
     bottom: "0px",
     left: "0px",
     Boxshadow: "3px 3px 5px 6px #ccc",
