@@ -29,8 +29,8 @@ export default function SideBar(props) {
       onClose={props.close}
       onOpen={() => {}}
     >
-      <div style={classes.side} >
-        <Grid container style={classes.main} style={{overflow:'scroll'}}>
+      <div style={classes.side}>
+        <Grid container style={classes.main}>
           <Grid item md={5} style={{ paddingLeft: "3%", paddingTop: "3%" }}>
             <Box style={classes.ImageWrapper}>
               <ArrowBackIosIcon style={{ width: "10px" }} />
@@ -62,7 +62,7 @@ export default function SideBar(props) {
           {console.log(onAdd)}
           {onAdd.map( (res,index)  =>  (
             
-          <Grid item md={12} >
+          <Grid item md={12}>
             <div style={classes.cartItem}>
               <Grid container>
                 <Grid item md={6} style={classes.CartLeft}>
